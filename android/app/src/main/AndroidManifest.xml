@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.topbusiness.gelamor">
    <application
-        android:label="Gelamors"
+        android:label="Gelamor"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
