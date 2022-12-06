@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -7,6 +8,8 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String lang = EasyLocalization.of(context)!.locale.languageCode;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
