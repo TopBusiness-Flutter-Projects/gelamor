@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
 // import 'package:http/http.dart' as http;
 
 final serviceLocator = GetIt.instance;
@@ -10,13 +12,11 @@ Future<void> setup() async {
 
   ///////////////////////// Blocs ////////////////////////
 
-  // serviceLocator.registerFactory(
-  //   () => LocaleCubit(
-  //     getSavedLanguageUseCase: serviceLocator(),
-  //     changeLanguageUseCase: serviceLocator(),
-  //     logoutUseCase: serviceLocator(),
-  //   ),
-  // );
+  serviceLocator.registerFactory(
+    () => ContactUsCubit(
+      serviceLocator(),
+    ),
+  );
 
   ///////////////////// Use Cases ////////////////////////
   //

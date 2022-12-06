@@ -8,7 +8,10 @@ class ImageAssets {
 
   // icons
   // static const String areaIcon = '$iconsPath/area_icon.svg';
-
+  static const String contactUsImage = '$imagePath/contact_us.png';
+  static const String rewriteIcon = '$iconsPath/rewrite.svg';
+  static const String accountPersonIcon = '$iconsPath/account_person.svg';
+  static const String emailIcon = '$iconsPath/email.svg';
  //Lottie
  //  static const String noLogin = '$lottiePath/login.json';
 
