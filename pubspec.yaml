@@ -49,6 +49,9 @@ dependencies:
   shared_preferences: ^2.0.15
   page_transition: "^2.0.9"
   flutter_launcher_icons: ^0.11.0
+  easy_localization: ^3.0.1
+  equatable: ^2.0.5
+  flutter_widget_from_html: ^0.9.0+1
 
 
 dev_dependencies:
@@ -83,3 +86,13 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/lottie/
+      # To add custom fonts to your application, add a fonts section here,
+      # in this "flutter" section. Each entry in this list should have a
+    # "family" key with the font family name, and a "fonts" key with a
+    # list giving the asset and other descriptors for the font. For
+    # example:
+  fonts:
+    - family: normal
+      fonts:
+        - asset: assets/fonts/font_normal.ttf
+        - asset: assets/fonts/font_bold.ttf

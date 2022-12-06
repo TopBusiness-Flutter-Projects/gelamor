@@ -5,6 +5,7 @@ import 'package:gelamor/injector.dart' as injector;
 
 import 'core/utils/app_routes.dart';
 import 'core/utils/app_strings.dart';
+import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
 
 class Glamor extends StatefulWidget {
   Glamor({Key? key}) : super(key: key);
@@ -18,25 +19,25 @@ class _GlamorState extends State<Glamor> {
 
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppStrings.appName,
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-    );
-    // return MultiBlocProvider(
-    //   providers: [
-    //     // BlocProvider(
-    //     //   create: (_) =>
-    //     //       injector.serviceLocator<LocaleCubit>()..getSavedLanguage(),
-    //     // ),
-    //   ],
-    //   child: const MaterialApp(
-    //     debugShowCheckedModeBanner: false,
-    //     title: AppStrings.appName,
-    //     onGenerateRoute: AppRoutes.onGenerateRoute,
-    //   ),
+    //
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   title: AppStrings.appName,
+    //   onGenerateRoute: AppRoutes.onGenerateRoute,
     // );
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) =>
+              injector.serviceLocator<ContactUsCubit>(),
+        ),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: AppStrings.appName,
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+      ),
+    );
   }
 }
 
