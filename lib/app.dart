@@ -6,6 +6,7 @@ import 'package:gelamor/injector.dart' as injector;
 import 'core/utils/app_routes.dart';
 import 'core/utils/app_strings.dart';
 import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
+import 'features/navigation_bottom/cubit/navigator_bottom_cubit.dart';
 
 class Glamor extends StatefulWidget {
   Glamor({Key? key}) : super(key: key);
@@ -30,6 +31,10 @@ class _GlamorState extends State<Glamor> {
         BlocProvider(
           create: (_) =>
               injector.serviceLocator<ContactUsCubit>(),
+        ),
+        BlocProvider(
+          create: (_) =>
+              injector.serviceLocator<NavigatorBottomCubit>(),
         ),
       ],
       child: const MaterialApp(

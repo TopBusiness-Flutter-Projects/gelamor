@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:gelamor/features/navigation_bottom/cubit/navigator_bottom_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,7 +18,7 @@ Future<void> setup() async {
       serviceLocator(),
     ),
   );
-
+serviceLocator.registerFactory(() => NavigatorBottomCubit());
   ///////////////////// Use Cases ////////////////////////
   //
   // serviceLocator.registerLazySingleton(
