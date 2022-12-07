@@ -6,7 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/utils/assets_manager.dart';
-import '../../../home_page/presentation/screens/home_page.dart';
+import '../../../home_page/screens/home_page.dart';
 import '../../../navigation_bottom/screens/navigation_bottom.dart';
 
 class SplashScreen extends StatefulWidget {

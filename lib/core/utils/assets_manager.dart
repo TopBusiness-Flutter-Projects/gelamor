@@ -6,6 +6,10 @@ class ImageAssets {
 
   static const String glamorLogo = '$imagePath/glamor_logo.png';
   static const String contactUsImage = '$imagePath/contact_us_image.png';
+  static const String weight_background = '$imagePath/weight_background.png';
+  static const String life_style_background = '$imagePath/life_style_background.png';
+  static const String icrease_weight_background = '$imagePath/icrease_weight_background.png';
+  static const String main = '$imagePath/main.png';
 
   // icons
   static const String rewriteIcon = '$iconsPath/rewrite.svg';

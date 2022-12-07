@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gelamor/core/utils/app_colors.dart';
-import 'package:gelamor/features/home_page/presentation/screens/home_page.dart';
 
 
+import '../../home_page/screens/home_page.dart';
 import '../cubit/navigator_bottom_cubit.dart';
 import '../widget/drawer_widget.dart';
 import '../widget/navigator_bottom_widget.dart';
@@ -26,7 +26,7 @@ class _NavigationBottomState extends State<NavigationBottom> {
         body: BlocBuilder<NavigatorBottomCubit, NavigatorBottomState>(
           builder: (context, state) {
            if (context.read<NavigatorBottomCubit>().page == 0) {
-             return Container(color: AppColors.color3,);
+             return HomePageScreen();
            } else if (context.read<NavigatorBottomCubit>().page == 1) {
              return Container(color: AppColors.color2,);
             } else if (context.read<NavigatorBottomCubit>().page == 2) {
