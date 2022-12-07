@@ -5,13 +5,13 @@ class ContactUsModel extends ContactUs {
       {required super.data, required super.message, required super.code});
 
   factory ContactUsModel.fromJson(Map<String, dynamic> json) => ContactUsModel(
-        data: ContactUsDataModel.fromJson(json["data"]),
+        data: ContactUsDataModel.fromJson(json["contact"]),
         message: json["message"],
         code: json["code"],
       );
 
   Map<String, dynamic> toJson() => {
-        "data": data.toJson(),
+        "contact": data.toJson(),
         "message": message,
         "code": code,
       };

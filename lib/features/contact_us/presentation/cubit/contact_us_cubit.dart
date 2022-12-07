@@ -29,12 +29,12 @@ class ContactUsCubit extends Cubit<ContactUsState> {
       ),
     );
 
-    if (response.code == 200) {
-      ContactUsLoaded(response);
+    if (response.code == 201) {
+      emit(ContactUsLoaded(response));
       Future.delayed(
         const Duration(milliseconds: 700),
         () {
-          emit(messageSendSuccessfully());
+          messageSendSuccessfully();
         },
       );
     } else {

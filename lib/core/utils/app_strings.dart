@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class AppStrings {
   static const String appName = 'app_name';
+
   // static const String googleApiKey = 'AIzaSyApFlumN0TgcOOrDIicTNpSKgOYHOFd0Ko';
   static const String fontFamily = '';
   static const String noRouteFound = 'No Route Found';
@@ -17,23 +20,40 @@ class AppStrings {
 
   //Strings Language
 
+  static String profileText = 'profile_title'.tr();
+  static String aboutUsText = 'about_us_text'.tr();
+  static String contactUsText = 'contact_us_text'.tr();
+  static String languageTitle = 'language_title'.tr();
+  static  String rateAppText = 'rate_app_text'.tr();
+  static  String privacyText = 'privacy_text'.tr();
+  static  String termsAndConditionsText = 'terms_and_conditions_text'.tr();
+  static  String shareAppText = 'share_app_text'.tr();
+  static  String logOutText = 'log_out_text'.tr();
+  static  String homeText = 'home'.tr();
+  static  String settingsText = 'setting'.tr();
+  static  String ordersText = "orders".tr();
+  static  String dateText = "date".tr();
+  static  String errorMessage = 'error_message'.tr();
+  static  String nameHint = 'name_hint'.tr();
+  static  String nameValidatorMessage = 'name_validator_message'.tr();
+  static  String emailHint = 'email_hint'.tr();
+  static  String emailValidatorMessage = 'email_validator_message'.tr();
+  static  String subjectHint = 'subject_hint'.tr();
+  static  String subjectValidatorMessage = 'subject_validator_message'.tr();
+  static  String messageHint = 'message_hint'.tr();
+  static  String messageValidatorMessage = 'message_validator_message'.tr();
+  static  String sendBtn = 'send_btn'.tr();
+  static  String helpYouText = 'help_you_text'.tr();
+
   static const String arabicLanguage = 'arabic_language';
   static const String englishLanguage = 'english_language';
   static const String kurdishLanguage = 'kurdish_language';
-  static const String languageTitle = 'language_title';
   static const String currencyHint = 'currency_hint';
   static const String iraqDinarText = 'iraq_dinar_text';
   static const String dollarText = 'dollar_text';
   static const String saveText = 'save_text';
   static const String notificationText = 'notification_text';
   static const String bloggsText = 'bloggs_text';
-  static const String aboutUsText = 'about_us_text';
-  static const String contactUsText = 'contact_us_text';
-  static const String rateAppText = 'rate_app_text';
-  static const String privacyText = 'privacy_text';
-  static const String termsAndConditionsText = 'terms_and_conditions_text';
-  static const String shareAppText = 'share_app_text';
-  static const String logOutText = 'log_out_text';
   static const String addNewTitle = 'add_new_title';
   static const String popularTitle = 'popular_title';
   static const String viewMoreText = 'view_more_text';
@@ -65,16 +85,13 @@ class AppStrings {
   static const String login200message = 'login200_message';
   static const String login411message = 'login411_message';
   static const String login406message = 'login406_message';
-  static const String emailHint = 'email_hint';
   static const String passwordHint = 'password_hint';
   static const String confirmPasswordHint = 'confirm_password_hint';
-  static const String nameHint = 'name_hint';
   static const String phoneHint = 'phone_hint';
   static const String whatsappHint = 'whatsapp_hint';
-  static const String emailValidatorMessage = 'email_validator_message';
   static const String passwordValidatorMessage = 'password_validator_message';
-  static const String confirmPasswordValidatorMessage = 'confirm_password_validator_message';
-  static const String nameValidatorMessage = 'name_validator_message';
+  static const String confirmPasswordValidatorMessage =
+      'confirm_password_validator_message';
   static const String phoneValidatorMessage = 'phone_validator_message';
   static const String whatsappValidatorMessage = 'whatsapp_validator_message';
   static const String passwordValidationMessage = 'password_validation_message';
@@ -95,11 +112,11 @@ class AppStrings {
   static const String locationText = 'location_text';
   static const String forgetPasswordTitle = 'forget_password_title';
   static const String forgetPasswordDesc = 'forget_password_desc';
-  static const String sendBtn = 'send_btn';
   static const String resetPasswordText = 'reset_password_text';
   static const String resetPasswordTitle = 'reset_password_title';
   static const String resetPasswordDesc = 'reset_password_desc';
-  static const String resetPasswordValidatorMessage = 'reset_password_validator_message';
+  static const String resetPasswordValidatorMessage =
+      'reset_password_validator_message';
   static const String doneBtn = 'done_btn';
   static const String newPasswordText = 'new_password_text';
   static const String newPasswordTitle = 'new_password_title';
@@ -109,15 +126,8 @@ class AppStrings {
   static const String soledPropertyText = 'soled_property_text';
   static const String agencyText = 'agency_text';
   static const String packagesText = 'packages_text';
-  static const String editProfileText = 'edit_profile_text';
   static const String deleteAccountText = 'delete_account_text';
-  static const String helpYouText = 'help_you_text';
   static const String shouldLoginText = 'should_login_text';
-  static const String subjectValidatorMessage = 'subject_validator_message';
-  static const String messageValidatorMessage = 'message_validator_message';
-  static const String subjectHint = 'subject_hint';
-  static const String messageHint = 'message_hint';
-  static const String errorMessage = 'error_message';
   static const String filterText = 'filter_text';
   static const String selectCityText = 'select_city_text';
   static const String selectLocationText = 'select_location_text';
@@ -157,7 +167,8 @@ class AppStrings {
   static const String selectImageValidator = 'select_image_validator';
   static const String selectLocationValidator = 'select_location_validator';
   static const String cancelBtn = 'cancel_btn';
-  static const String waringDeleteAccountMessage = 'waring_delete_account_message';
+  static const String waringDeleteAccountMessage =
+      'waring_delete_account_message';
   static const String updateProfileTitle = 'update_profile_title';
   static const String timeLeftText = 'time_left_text';
   static const String payBtn = 'pay_btn';
@@ -216,7 +227,8 @@ class AppStrings {
   static const String percentHint = 'percent_hint';
   static const String planTitleValidator = 'plan_title_validator';
   static const String percentValidator = 'percent_validator';
-  static const String unitDetailsFloorPlanTitle = 'unit_details_floor_plan_title';
+  static const String unitDetailsFloorPlanTitle =
+      'unit_details_floor_plan_title';
   static const String bedroomValidator = 'bedroom_validator';
   static const String bathroomValidator = 'bathroom_validator';
   static const String publishBtn = 'publish_btn';
@@ -224,7 +236,4 @@ class AppStrings {
   static const String IQDText = 'IQD_text';
   static const String selectBtn = 'select_btn';
   static const String resendText = 'resend_text';
-
-
-
 }

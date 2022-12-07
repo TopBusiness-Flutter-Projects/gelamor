@@ -1,6 +1,26 @@
 {
-
-
-
-
+  "profile_title": "Profile",
+  "about_us_text": "About Us",
+  "contact_us_text": "Contact Us",
+  "language_title": " Language",
+  "rate_app_text": "Rate App",
+  "privacy_text": "Privacy",
+  "terms_and_conditions_text": "Terms and Conditions",
+  "share_app_text": "Share App",
+  "log_out_text": "Log Out",
+  "home": "Home",
+  "setting": "Settings",
+  "orders": "Orders",
+  "date": "Date",
+  "error_message": "An Error occurred, please try again later",
+  "name_hint": "Name",
+  "name_validator_message": "Please enter Name",
+  "email_hint": "Email",
+  "email_validator_message": "Please enter Email",
+  "subject_hint": " Subject",
+  "subject_validator_message": " Please Enter The Subject",
+  "message_hint": "Message",
+  "message_validator_message": " Please Enter Your Message",
+  "send_btn": "Send",
+  "help_you_text": " helps you to"
 }

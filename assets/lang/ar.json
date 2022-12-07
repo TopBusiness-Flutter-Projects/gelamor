@@ -1,3 +1,26 @@
 {
-
+  "profile_title": "الصفحه الشخصيه",
+  "about_us_text": "معلومات عننا",
+  "contact_us_text": "تواصل معنا",
+  "language_title": " اللغه",
+  "rate_app_text": "قيم التطبيق",
+  "privacy_text": "خصوصية",
+  "terms_and_conditions_text": "الأحكام والشروط",
+  "share_app_text": "شارك التطبيق",
+  "log_out_text": "تسجيل خروج",
+  "home": "الرئيسيه",
+  "setting": "الاعدادات",
+  "orders": "الطالبات",
+  "date": "الموعيد",
+  "error_message": "حدث خطا يرجي المحاوله لاحقا",
+  "name_hint": "الاسم",
+  "name_validator_message": "الرجاء إدخال الاسم",
+  "email_hint": "البريد الإلكتروني",
+  "email_validator_message": "الرجاء إدخال البريد الإلكتروني",
+  "subject_hint": " الموضوع",
+  "subject_validator_message": " من فضلك أدخل موضوع الرساله",
+  "message_hint": "الرساله",
+  "message_validator_message": " من فضلك ادخل الرساله الخاصه بك",
+  "send_btn": "إرسال",
+  "help_you_text": " يساعدك على "
 }

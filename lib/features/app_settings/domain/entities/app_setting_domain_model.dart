@@ -8,22 +8,27 @@ import 'package:equatable/equatable.dart';
 
 import '../../data/models/app_setting_data_model.dart';
 
-AppSetting appSettingFromJson(String str) => AppSettingModel.fromJson(json.decode(str));
+AppSetting appSettingFromJson(String str) =>
+    AppSettingModel.fromJson(json.decode(str));
 
 String appSettingToJson(AppSettingModel data) => json.encode(data.toJson());
 
-class AppSetting extends Equatable{
+class AppSetting extends Equatable {
   const AppSetting({
-      this.data,
+    this.message,
+    this.code,
+    this.data,
   });
 
   final AppSettingDataModel? data;
+  final String? message;
+  final int? code;
 
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [data,message,code];
 }
 
-class AppSettingData extends Equatable{
+class AppSettingData extends Equatable {
   const AppSettingData({
     this.id,
     this.aboutUsAr,
@@ -60,25 +65,23 @@ class AppSettingData extends Equatable{
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-
-
   @override
   List<Object?> get props => [
-    id,
-    aboutUsAr,
-    termsAr,
-    privacyAr,
-    aboutUsEn,
-    termsEn,
-    privacyEn,
-    nameEn,
-    nameAr,
-    facebook,
-    insta,
-    twitter,
-    snapChat,
-    whatsapp,
-    createdAt,
-    updatedAt,
-  ];
+        id,
+        aboutUsAr,
+        termsAr,
+        privacyAr,
+        aboutUsEn,
+        termsEn,
+        privacyEn,
+        nameEn,
+        nameAr,
+        facebook,
+        insta,
+        twitter,
+        snapChat,
+        whatsapp,
+        createdAt,
+        updatedAt,
+      ];
 }

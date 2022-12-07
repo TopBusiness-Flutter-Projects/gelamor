@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:gelamor/core/utils/app_strings.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -17,6 +17,8 @@ class NavigatorBottomWidget extends StatelessWidget {
     return BlocBuilder<NavigatorBottomCubit, NavigatorBottomState>(
       builder: (context, state) {
         this._page = context.read<NavigatorBottomCubit>().page;
+        print('_page');
+        print(_page);
         return Row(
           children: [
             Expanded(
@@ -29,17 +31,16 @@ class NavigatorBottomWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       MySvgWidget(
-                        path: ImageAssets.contactUsImage,
-                        color:  _page == 2 ?  AppColors.primary : AppColors.grey1,
-                        width:  24,
+                        path: ImageAssets.homeIcon,
+                        color: _page == 0 ? AppColors.primary : AppColors.grey1,
+                        width: 24,
                         height: 24,
                       ),
                       Text(
                         _page == 0 ? "home".tr() : "",
                         style: TextStyle(
-                          color: _page == 0
-                              ?  AppColors.primary
-                              : AppColors.grey1,
+                          color:
+                              _page == 0 ? AppColors.primary : AppColors.grey1,
                         ),
                       )
                     ],
@@ -49,25 +50,24 @@ class NavigatorBottomWidget extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   context.read<NavigatorBottomCubit>().changePage(1);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Column(
                     children: [
-                       MySvgWidget(
-                         path: ImageAssets.contactUsImage,
-                         color:  _page == 2 ?  AppColors.primary : AppColors.grey1,
-                         width:  24,
-                         height: 24,
+                      MySvgWidget(
+                        path: ImageAssets.dateIcon,
+                        color: _page == 1 ? AppColors.primary : AppColors.grey1,
+                        width: 24,
+                        height: 24,
                       ),
                       Text(
-                        _page == 1 ? "chat".tr() : "",
+                        _page == 1 ? "date".tr() : "",
                         style: TextStyle(
-                          color: _page == 1
-                              ?  AppColors.primary
-                              : AppColors.grey1,
+                          color:
+                              _page == 1 ? AppColors.primary : AppColors.grey1,
                         ),
                       )
                     ],
@@ -84,18 +84,17 @@ class NavigatorBottomWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8),
                   child: Column(
                     children: [
-                       MySvgWidget(
-                       path: ImageAssets.contactUsImage,
-                      color:  _page == 2 ?  AppColors.primary : AppColors.grey1,
-                      width:  24,
-                       height: 24,
+                      MySvgWidget(
+                        path: ImageAssets.dinnerIcon,
+                        color: _page == 2 ? AppColors.primary : AppColors.grey1,
+                        width: 24,
+                        height: 24,
                       ),
                       Text(
                         _page == 2 ? "orders".tr() : "",
                         style: TextStyle(
-                          color: _page == 2
-                              ?  AppColors.primary
-                              : AppColors.grey1,
+                          color:
+                              _page == 2 ? AppColors.primary : AppColors.grey1,
                         ),
                       )
                     ],
@@ -112,18 +111,17 @@ class NavigatorBottomWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8),
                   child: Column(
                     children: [
-                       MySvgWidget(
-                         path: ImageAssets.contactUsImage,
-                         color:  _page == 2 ?  AppColors.primary : AppColors.grey1,
-                         width:  24,
-                         height: 24,
+                      MySvgWidget(
+                        path: ImageAssets.settingIcon,
+                        color: _page == 3 ? AppColors.primary : AppColors.grey1,
+                        width: 24,
+                        height: 24,
                       ),
                       Text(
-                        _page == 3 ? "setting".tr() : "",
+                        _page == 3 ? AppStrings.settingsText : "",
                         style: TextStyle(
-                          color: _page == 3
-                              ?  AppColors.primary
-                              : AppColors.grey1,
+                          color:
+                              _page == 3 ? AppColors.primary : AppColors.grey1,
                         ),
                       )
                     ],

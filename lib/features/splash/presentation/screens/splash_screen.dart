@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/utils/assets_manager.dart';
 import '../../../home_page/presentation/screens/home_page.dart';
+import '../../../navigation_bottom/screens/navigation_bottom.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
           type: PageTransitionType.fade,
           alignment: Alignment.center,
           duration: const Duration(milliseconds: 1300),
-          child: const HomePageScreen(),
+          child:  NavigationBottom(),
         ),
       );
 

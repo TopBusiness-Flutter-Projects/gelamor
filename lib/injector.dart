@@ -3,6 +3,8 @@ import 'package:gelamor/features/navigation_bottom/cubit/navigator_bottom_cubit.
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/remote/service.dart';
+import 'features/app_settings/presentation/cubit/app_setting_cubit.dart';
 import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
 // import 'package:http/http.dart' as http;
 
@@ -18,7 +20,12 @@ Future<void> setup() async {
       serviceLocator(),
     ),
   );
-serviceLocator.registerFactory(() => NavigatorBottomCubit());
+  serviceLocator.registerFactory(
+    () => AppSettingCubit(
+      serviceLocator(),
+    ),
+  );
+  serviceLocator.registerFactory(() => NavigatorBottomCubit());
   ///////////////////// Use Cases ////////////////////////
   //
   // serviceLocator.registerLazySingleton(
@@ -44,8 +51,7 @@ serviceLocator.registerFactory(() => NavigatorBottomCubit());
   //     () => NetworkInfo(connectionChecker: serviceLocator()));
 
   // Api Consumer
-  // serviceLocator.registerLazySingleton<BaseApiConsumer>(
-  //     () => DioConsumer(client: serviceLocator()));
+  serviceLocator.registerLazySingleton(() => ServiceApi(serviceLocator()));
 
   //! External
   // Shared Preferences
@@ -56,7 +62,9 @@ serviceLocator.registerFactory(() => NavigatorBottomCubit());
   // serviceLocator.registerLazySingleton(() => http.Client());
 
   // Dio
-  serviceLocator.registerLazySingleton(() => Dio());
+  serviceLocator.registerLazySingleton(() => Dio(BaseOptions(
+      contentType: "application/x-www-form-urlencoded",
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'})));
   // serviceLocator.registerLazySingleton(() => AppInterceptors());
   serviceLocator.registerLazySingleton(
     () => LogInterceptor(

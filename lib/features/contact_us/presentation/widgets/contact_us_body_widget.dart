@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/assets_manager.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_textfield.dart';
@@ -35,42 +36,42 @@ class ContactUsBodyWidget extends StatelessWidget {
               CustomTextField(
                 image: ImageAssets.accountPersonIcon,
                 imageColor: AppColors.primary,
-                title: 'translateText(AppStrings.nameHint, context)',
+                title:AppStrings.nameHint,
                 textInputType: TextInputType.text,
                 controller: context.read<ContactUsCubit>().nameController,
-                validatorMessage: 'translateText(AppStrings.nameValidatorMessage,context,)',
+                validatorMessage: AppStrings.nameValidatorMessage,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 image: ImageAssets.emailIcon,
                 imageColor: AppColors.primary,
-                title: 'translateText(AppStrings.emailHint, context)',
+                title: AppStrings.emailHint,
                 textInputType: TextInputType.emailAddress,
                 controller: context.read<ContactUsCubit>().emailController,
-                validatorMessage: 'translateText(AppStrings.emailValidatorMessage, context,)',
+                validatorMessage: AppStrings.emailValidatorMessage,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 image: ImageAssets.rewriteIcon,
                 imageColor: AppColors.primary,
-                title: 'translateText(AppStrings.subjectHint, context)',
+                title: AppStrings.subjectHint,
                 textInputType: TextInputType.text,
                 controller: context.read<ContactUsCubit>().subjectController,
-                validatorMessage: 'translateText(AppStrings.subjectValidatorMessage, context,)',
+                validatorMessage: AppStrings.subjectValidatorMessage,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 image: ImageAssets.rewriteIcon,
                 imageColor: AppColors.primary,
-                title: 'translateText(AppStrings.messageHint, context,)',
+                title: AppStrings.messageHint,
                 textInputType: TextInputType.text,
                 minLine: 6,
                 controller: context.read<ContactUsCubit>().messageController,
-                validatorMessage: 'translateText(AppStrings.messageValidatorMessage, context,)',
+                validatorMessage: AppStrings.messageValidatorMessage,
               ),
               const SizedBox(height: 60),
               CustomButton(
-                text: 'translateText(AppStrings.sendBtn, context)',
+                text: AppStrings.sendBtn,
                 color: AppColors.primary,
                 onClick: () {
                   if (formKey.currentState!.validate()) {

@@ -2,15 +2,17 @@
 import '../../domain/entities/app_setting_domain_model.dart';
 
 class AppSettingModel extends AppSetting {
-  const AppSettingModel({ super.data});
+  const AppSettingModel({ super.data,super.message,super.code});
 
   factory AppSettingModel.fromJson(Map<String, dynamic> json) =>
       AppSettingModel(
-        data: AppSettingDataModel.fromJson(json["data"]),
+        data: AppSettingDataModel.fromJson(json["setting"]),
+        message: json["message"],
+        code: json["code"],
       );
 
   Map<String, dynamic> toJson() => {
-        "data": data!.toJson(),
+        "setting": data!.toJson(),
       };
 }
 
@@ -36,11 +38,11 @@ class AppSettingDataModel extends AppSettingData {
   factory AppSettingDataModel.fromJson(Map<String, dynamic> json) => AppSettingDataModel(
     id: json["id"],
     nameEn: json["name_en"],
-    nameAr: json["about_ar"],
-    aboutUsAr: json["about_us_ar"]??"لا توجد بيانات",
+    nameAr: json["name_ar"],
+    aboutUsAr: json["about_ar"]??"لا توجد بيانات",
     termsAr: json["terms_ar"]??"لا توجد بيانات",
     privacyAr: json["privacy_ar"]??"لا توجد بيانات",
-    aboutUsEn: json["about_us_en"]??"No Data",
+    aboutUsEn: json["about_en"]??"No Data",
     termsEn: json["terms_en"]??"No Data",
     privacyEn: json["privacy_en"]??"No Data",
     facebook: json["facebook"]??"No Url Facebook",
@@ -49,7 +51,6 @@ class AppSettingDataModel extends AppSettingData {
     snapChat: json["snap_chat"]??"No Url Snap Chat",
     whatsapp: json["whatsapp"]??"No Whatsapp Number",
     createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
   );
 
   Map<String, dynamic> toJson() => {

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gelamor/core/utils/app_colors.dart';
 import 'package:gelamor/features/home_page/presentation/screens/home_page.dart';
 
 
 import '../cubit/navigator_bottom_cubit.dart';
+import '../widget/drawer_widget.dart';
 import '../widget/navigator_bottom_widget.dart';
 
 class NavigationBottom extends StatefulWidget {
@@ -24,13 +26,13 @@ class _NavigationBottomState extends State<NavigationBottom> {
         body: BlocBuilder<NavigatorBottomCubit, NavigatorBottomState>(
           builder: (context, state) {
            if (context.read<NavigatorBottomCubit>().page == 0) {
-              return HomePageScreen();
+             return Container(color: AppColors.color3,);
            } else if (context.read<NavigatorBottomCubit>().page == 1) {
-            return HomePageScreen();
+             return Container(color: AppColors.color2,);
             } else if (context.read<NavigatorBottomCubit>().page == 2) {
-              return HomePageScreen();
+              return Container(color: AppColors.color1,);
             } else {
-              return HomePageScreen();
+              return DrawerWidget();
             }
           },
         ));

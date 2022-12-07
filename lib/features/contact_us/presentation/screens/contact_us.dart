@@ -16,9 +16,11 @@ class ContactUsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.white,
-        title: Text(
-          'translateText(AppStrings.contactUsText, context)',
-          style: TextStyle(color: AppColors.black),
+        title: Center(
+          child: Text(
+            AppStrings.contactUsText,
+            style: TextStyle(color: AppColors.black),
+          ),
         ),
         iconTheme: IconThemeData(
           color: AppColors.black,
@@ -31,7 +33,7 @@ class ContactUsScreen extends StatelessWidget {
           }else if(state is ContactUsError){
             Future.delayed(const Duration(milliseconds: 400), () {
               snackBar(
-                'translateText(AppStrings.errorMessage, context)',
+                AppStrings.errorMessage,
                 context,
                 color: AppColors.error,
               );
@@ -42,7 +44,6 @@ class ContactUsScreen extends StatelessWidget {
               const Duration(milliseconds: 400),
                   () {
                 Navigator.of(context).pop();
-
               },
             );
             return const ShowLoadingIndicator();
