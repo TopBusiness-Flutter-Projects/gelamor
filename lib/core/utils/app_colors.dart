@@ -9,6 +9,7 @@ class AppColors {
   static Color buttonBackground = HexColor('#D9D9D9');
   static Color whatsappButtonBackground = HexColor('#40E15D');
   static Color callButtonBackground = HexColor('#007EC4');
+  static Color genderBackgroundColor = HexColor('#448AFF');
 
   static Color hint = Colors.grey;
   static Color blackLite = Colors.black12;
@@ -29,8 +30,8 @@ class AppColors {
   static  Color grey6 = HexColor("#747474");
   static  Color grey7 = HexColor("#F3F3F3");
 
-  static const  Color color1 = Color(0xff143360);
-  static const  Color color2 = Color(0xffFFF2E3);
-  static const  Color color3 = Color(0xff282828);
-  static const  Color color4 = Color(0xffFFF4E6);
+  static   Color color1 = HexColor('#238854');
+  static   Color color2 = HexColor('#937C63');
+  static   Color color3 = HexColor('#F87171');
+  static   Color color4 = HexColor('#FF0000');
 }

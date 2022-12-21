@@ -6,10 +6,16 @@ class ImageAssets {
 
   static const String glamorLogo = '$imagePath/glamor_logo.png';
   static const String contactUsImage = '$imagePath/contact_us_image.png';
+  static const String twoCircleImage = '$imagePath/two_circle.png';
+  static const String loginImage = '$imagePath/login_image.png';
+  static const String forgotPwImage = '$imagePath/forgot_pw.png';
+  static const String checkCodeImage = '$imagePath/check_code.png';
+  static const String newPasswordImage = '$imagePath/new_password_image.png';
   static const String weight_background = '$imagePath/weight_background.png';
   static const String life_style_background = '$imagePath/life_style_background.png';
   static const String icrease_weight_background = '$imagePath/icrease_weight_background.png';
   static const String main = '$imagePath/main.png';
+  static const String pointImage = '$imagePath/image_point.png';
 
   // icons
   static const String rewriteIcon = '$iconsPath/rewrite.svg';
@@ -29,6 +35,9 @@ class ImageAssets {
   static const String dateIcon = '$iconsPath/date_icon.svg';
   static const String dinnerIcon = '$iconsPath/dinner_icon.svg';
   static const String settingIcon = '$iconsPath/setting_icon.svg';
+  static const String maleIcon = '$iconsPath/male.svg';
+  static const String femaleIcon = '$iconsPath/female.svg';
+  static const String sliderIcon = '$iconsPath/slider_icon.svg';
 
 
 

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/separator.dart';
 import '../../../core/utils/app_colors.dart';
@@ -32,7 +33,17 @@ class DrawerWidget extends StatelessWidget {
             MyListTile(
               image: ImageAssets.languageIcon,
               text: AppStrings.languageTitle,
-              onClick: () {},
+              onClick: () async {
+                String lang = EasyLocalization.of(context)!.locale.languageCode;
+                lang == 'ar'
+                    ? EasyLocalization.of(context)!
+                        .setLocale(const Locale('en'))
+                    : EasyLocalization.of(context)!
+                        .setLocale(const Locale('ar'));
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setString('lan', lang);
+                Navigator.pushReplacementNamed(context, Routes.initialRoute);
+              },
             ),
             MySeparator(height: 1, color: AppColors.gray),
             MyListTile(
@@ -43,7 +54,7 @@ class DrawerWidget extends StatelessWidget {
             MySeparator(height: 1, color: AppColors.gray),
             MyListTile(
               image: ImageAssets.aboutUsIcon,
-              text: AppStrings.aboutUsText,
+              text: 'about_us_text'.tr(),
               onClick: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -109,7 +120,7 @@ class DrawerWidget extends StatelessWidget {
             MyListTile(
               image: ImageAssets.logOutIcon,
               text: AppStrings.logOutText,
-              onClick: () {},
+              onClick: () => Navigator.pushNamed(context, Routes.registerRoute),
             ),
             // loginDataModel.message != null
             //     ? MyListTile(

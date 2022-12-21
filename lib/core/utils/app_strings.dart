@@ -2,8 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 
 class AppStrings {
   static const String appName = 'app_name';
-
-  // static const String googleApiKey = 'AIzaSyApFlumN0TgcOOrDIicTNpSKgOYHOFd0Ko';
   static const String fontFamily = '';
   static const String noRouteFound = 'No Route Found';
   static const String ok = 'Ok';
@@ -24,26 +22,63 @@ class AppStrings {
   static String aboutUsText = 'about_us_text'.tr();
   static String contactUsText = 'contact_us_text'.tr();
   static String languageTitle = 'language_title'.tr();
-  static  String rateAppText = 'rate_app_text'.tr();
-  static  String privacyText = 'privacy_text'.tr();
-  static  String termsAndConditionsText = 'terms_and_conditions_text'.tr();
-  static  String shareAppText = 'share_app_text'.tr();
-  static  String logOutText = 'log_out_text'.tr();
-  static  String homeText = 'home'.tr();
-  static  String settingsText = 'setting'.tr();
-  static  String ordersText = "orders".tr();
-  static  String dateText = "date".tr();
-  static  String errorMessage = 'error_message'.tr();
-  static  String nameHint = 'name_hint'.tr();
-  static  String nameValidatorMessage = 'name_validator_message'.tr();
-  static  String emailHint = 'email_hint'.tr();
-  static  String emailValidatorMessage = 'email_validator_message'.tr();
-  static  String subjectHint = 'subject_hint'.tr();
-  static  String subjectValidatorMessage = 'subject_validator_message'.tr();
-  static  String messageHint = 'message_hint'.tr();
-  static  String messageValidatorMessage = 'message_validator_message'.tr();
-  static  String sendBtn = 'send_btn'.tr();
-  static  String helpYouText = 'help_you_text'.tr();
+  static String rateAppText = 'rate_app_text'.tr();
+  static String privacyText = 'privacy_text'.tr();
+  static String termsAndConditionsText = 'terms_and_conditions_text'.tr();
+  static String shareAppText = 'share_app_text'.tr();
+  static String logOutText = 'log_out_text'.tr();
+  static String homeText = 'home'.tr();
+  static String settingsText = 'setting'.tr();
+  static String ordersText = "orders".tr();
+  static String dateText = "date".tr();
+  static String errorMessage = 'error_message'.tr();
+  static String nameHint = 'name_hint'.tr();
+  static String nameValidatorMessage = 'name_validator_message'.tr();
+  static String emailHint = 'email_hint'.tr();
+  static String emailValidatorMessage = 'email_validator_message'.tr();
+  static String subjectHint = 'subject_hint'.tr();
+  static String subjectValidatorMessage = 'subject_validator_message'.tr();
+  static String messageHint = 'message_hint'.tr();
+  static String messageValidatorMessage = 'message_validator_message'.tr();
+  static String sendBtn = 'send_btn'.tr();
+  static String helpYouText = 'help_you_text'.tr();
+  static String phoneHint = 'phone_hint'.tr();
+  static String phoneValidatorMessage = 'phone_validator_message'.tr();
+  static String locationHint = 'location_hint'.tr();
+  static String locationValidatorMessage = 'location_validator_message'.tr();
+  static String passwordHint = 'password_hint'.tr();
+  static String passwordValidationMessage = 'password_validation_message'.tr();
+  static String confirmPasswordHint = 'confirm_password_hint'.tr();
+  static String confirmPasswordValidationMessage =
+      'confirm_password_validation_message'.tr();
+  static String checkPasswordMessage = 'check_password_message'.tr();
+  static String signUpBtn = 'sign_up_btn'.tr();
+  static String signInBtn = 'sing_in_btn'.tr();
+  static String forgetPasswordBtn = 'forget_password_btn'.tr();
+  static String alreadyHaveAccountText = 'already_have_account_text'.tr();
+  static String doNotHaveAccountText = 'do_not_have_account_text'.tr();
+  static String challengeYourselfText = 'challenge_yourself_text'.tr();
+  static String challengeYourselfDetailsText =
+      'challenge_yourself_details_text'.tr();
+  static String welcomeBackText = 'welcome_back_text'.tr();
+  static String doneBtn = 'done_btn'.tr();
+  static String resetPasswordValidatorMessage =
+      'reset_password_validator_message'.tr();
+  static String resetPasswordTitle = 'reset_password_title'.tr();
+  static String resetPasswordDesc = 'reset_password_desc'.tr();
+  static String newPasswordText = 'new_password_text'.tr();
+  static String newPasswordTitle = 'new_password_title'.tr();
+  static String confirmBtn = 'confirm_btn'.tr();
+  static String selectCountryText = 'select_city_text'.tr();
+  static String selectCountryMessage = 'select_city_message'.tr();
+
+
+
+
+
+
+
+
 
   static const String arabicLanguage = 'arabic_language';
   static const String englishLanguage = 'english_language';
@@ -85,16 +120,11 @@ class AppStrings {
   static const String login200message = 'login200_message';
   static const String login411message = 'login411_message';
   static const String login406message = 'login406_message';
-  static const String passwordHint = 'password_hint';
-  static const String confirmPasswordHint = 'confirm_password_hint';
-  static const String phoneHint = 'phone_hint';
   static const String whatsappHint = 'whatsapp_hint';
   static const String passwordValidatorMessage = 'password_validator_message';
   static const String confirmPasswordValidatorMessage =
       'confirm_password_validator_message';
-  static const String phoneValidatorMessage = 'phone_validator_message';
   static const String whatsappValidatorMessage = 'whatsapp_validator_message';
-  static const String passwordValidationMessage = 'password_validation_message';
   static const String forgetPasswordText = 'forget_password_text';
   static const String registerText = 'register_text';
   static const String welcomeText = 'welcome_text';
@@ -113,14 +143,7 @@ class AppStrings {
   static const String forgetPasswordTitle = 'forget_password_title';
   static const String forgetPasswordDesc = 'forget_password_desc';
   static const String resetPasswordText = 'reset_password_text';
-  static const String resetPasswordTitle = 'reset_password_title';
-  static const String resetPasswordDesc = 'reset_password_desc';
-  static const String resetPasswordValidatorMessage =
-      'reset_password_validator_message';
-  static const String doneBtn = 'done_btn';
-  static const String newPasswordText = 'new_password_text';
-  static const String newPasswordTitle = 'new_password_title';
-  static const String confirmBtn = 'confirm_btn';
+
   static const String monthText = 'month_text';
   static const String myAddsText = 'my_adds_text';
   static const String soledPropertyText = 'soled_property_text';
@@ -129,7 +152,6 @@ class AppStrings {
   static const String deleteAccountText = 'delete_account_text';
   static const String shouldLoginText = 'should_login_text';
   static const String filterText = 'filter_text';
-  static const String selectCityText = 'select_city_text';
   static const String selectLocationText = 'select_location_text';
   static const String selectAgentText = 'select_agent_text';
   static const String correctPhoneText = 'correct_phone_text';

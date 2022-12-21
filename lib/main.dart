@@ -15,9 +15,10 @@ main() async {
       EasyLocalization(
         supportedLocales: const [Locale('ar', ''), Locale('en', '')],
         path: 'assets/lang',
-        saveLocale: true,
-        startLocale: const Locale('ar', ''),
-        fallbackLocale: const Locale('ar', ''),
+        saveLocale: false,
+        startLocale: const Locale('en', ''),
+        fallbackLocale: const Locale('en', ''),
+
         child: Glamor(),
       ),
     ),

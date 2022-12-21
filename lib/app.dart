@@ -9,6 +9,8 @@ import 'core/utils/app_strings.dart';
 import 'features/app_settings/presentation/cubit/app_setting_cubit.dart';
 import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
 import 'features/navigation_bottom/cubit/navigator_bottom_cubit.dart';
+import 'features/packages/presentation/cubit/packages_cubit.dart';
+import 'features/registeration/presentation/cubit/registration_cubit.dart';
 
 class Glamor extends StatefulWidget {
   Glamor({Key? key}) : super(key: key);
@@ -22,12 +24,6 @@ class _GlamorState extends State<Glamor> {
 
   @override
   Widget build(BuildContext context) {
-    //
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   title: AppStrings.appName,
-    //   onGenerateRoute: AppRoutes.onGenerateRoute,
-    // );
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -41,6 +37,14 @@ class _GlamorState extends State<Glamor> {
         BlocProvider(
           create: (_) =>
               injector.serviceLocator<AppSettingCubit>(),
+        ),
+        BlocProvider(
+          create: (_) =>
+              injector.serviceLocator<RegistrationCubit>(),
+        ),
+        BlocProvider(
+          create: (_) =>
+              injector.serviceLocator<PackagesCubit>(),
         ),
       ],
       child:  MaterialApp(

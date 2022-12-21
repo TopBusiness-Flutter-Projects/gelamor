@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utils/app_colors.dart';
-import '../utils/convert_numbers_method.dart';
-
 
 class CustomTextField extends StatelessWidget {
-   const CustomTextField({
+  const CustomTextField({
     Key? key,
     required this.image,
     required this.title,
@@ -41,7 +38,10 @@ class CustomTextField extends StatelessWidget {
           image != "null"
               ? Row(
                   children: [
-                    SvgPicture.asset(image,color: imageColor,),
+                    SvgPicture.asset(
+                      image,
+                      color: imageColor,
+                    ),
                     const SizedBox(width: 6),
                     Text(
                       title,
@@ -56,42 +56,42 @@ class CustomTextField extends StatelessWidget {
           TextFormField(
             controller: controller,
             keyboardType: textInputType,
-            inputFormatters: textInputType ==TextInputType.number?[ThousandsSeparatorInputFormatter()]:[],
+            inputFormatters: textInputType == TextInputType.number
+                ? [ThousandsSeparatorInputFormatter()]
+                : [],
             obscureText: isPassword,
             decoration: InputDecoration(
-                prefixIcon: isNum
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 12),
-                        child: Text(
-                          // IsLanguage.isEnLanguage(context)
-                               "+964",
-                              // : "+ ${replaceToArabicNumber("964")}",
-                          style: const TextStyle(fontSize: 16),
-                          textAlign: TextAlign.center,
-                        ),
-                      )
-                    : null,
-                hintText: title,
-                border: image != "null"
-                    ? OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide.none,
-                      )
-                    : OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+              prefixIcon: isNum
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 12),
+                      child: Text(
+                        // IsLanguage.isEnLanguage(context)
+                        "+964",
+                        // : "+ ${replaceToArabicNumber("964")}",
+                        style: const TextStyle(fontSize: 16),
+                        textAlign: TextAlign.center,
                       ),
-                fillColor: AppColors.scaffoldBackground,
-                filled: true),
+                    )
+                  : null,
+              hintText: title,
+              border: image != "null"
+                  ? OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide.none,
+                    )
+                  : OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(35.0),
+                borderSide: BorderSide.none
+                    ),
+              fillColor: AppColors.white,
+              filled: true,
+            ),
             maxLines: isPassword ? 1 : 20,
             minLines: minLine,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return validatorMessage;
-              } else if (isAgent) {
-                // if (context.read<ProfileCubit>().statusCode == 422) {
-                //   return validatorMessage;
-                // }
               }
               return null;
             },
@@ -101,7 +101,6 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
-
 
 class ThousandsSeparatorInputFormatter extends TextInputFormatter {
   static const separator = ','; // Change this to '.' for other locales
