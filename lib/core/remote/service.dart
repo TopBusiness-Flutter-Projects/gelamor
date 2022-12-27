@@ -115,10 +115,6 @@ class ServiceApi {
   }
 
   Future<AllPackageModel> allPackageApis(String token,String lan) async {
-
-    print('lan');
-    print(lan);
-
     final response = await dio.get(
       EndPoints.allPackagesUrl,
       options: Options(
