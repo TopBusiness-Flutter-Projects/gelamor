@@ -9,5 +9,8 @@ class EndPoints {
   static const String checkCodeUrl = '${baseUrl}auth/password/code/check';
   static const String resetPasswordUrl = '${baseUrl}auth/password/reset';
   static const String allPackagesUrl = '${baseUrl}packages/all';
+  static const String logoutUrl = '${baseUrl}auth/user/logout';
+  static const String updateProfileUrl = '${baseUrl}auth/user/update';
+  static const String userStatisticsUrl = '${baseUrl}auth/user/statistics';
 
 }

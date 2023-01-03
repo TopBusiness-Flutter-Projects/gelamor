@@ -9,6 +9,7 @@ import '../../../core/utils/app_routes.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../../../core/widgets/list_tile.dart';
 import '../../app_settings/presentation/screens/app_settings.dart';
+import '../../profile/presentation/screens/profile.dart';
 
 class DrawerWidget extends StatelessWidget {
   DrawerWidget({Key? key}) : super(key: key);
@@ -49,7 +50,12 @@ class DrawerWidget extends StatelessWidget {
             MyListTile(
               image: ImageAssets.accountPersonIcon,
               text: 'profile_title'.tr(),
-              onClick: () {},
+              onClick: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreen(),
+                ),
+              ),
             ),
             MySeparator(height: 1, color: AppColors.gray),
             MyListTile(

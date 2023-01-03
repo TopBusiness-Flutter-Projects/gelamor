@@ -8,6 +8,7 @@ import '../../features/packages/models/all_packages_model.dart';
 import '../../features/registeration/models/countries_model.dart';
 import '../../features/registeration/models/login_model.dart';
 import '../models/status_response_model.dart';
+import '../models/user_statistic_model.dart';
 import '../utils/end_points.dart';
 import 'handle_exeption.dart';
 
@@ -22,7 +23,8 @@ class ServiceApi {
       print(EndPoints.contactUsUrl);
       Response response = await dio.post(EndPoints.contactUsUrl,
           data: sendContactUsModel.toJson());
-      print("Response : ${response.data}");
+      print('Url : ${EndPoints.contactUsUrl}');
+      print('Response : \n ${response.data}');
       return ContactUsModel.fromJson(response.data);
     } on DioError catch (e) {
       print(" Error : ${e}");
@@ -34,7 +36,8 @@ class ServiceApi {
   Future<AppSettingModel> appSettingsApi() async {
     try {
       Response response = await dio.get(EndPoints.appSettingsUrl);
-      print("Response : ${response.data}");
+      print('Url : ${EndPoints.appSettingsUrl}');
+      print('Response : \n ${response.data}');
       return AppSettingModel.fromJson(response.data);
     } on DioError catch (e) {
       print(" Error : ${e}");
@@ -51,24 +54,35 @@ class ServiceApi {
         "password": password,
       },
     );
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.loginUrl}');
+    print('Response : \n ${response.data}');
     return LoginModel.fromJson(response.data);
   }
 
   Future<LoginModel> userRegister(User user) async {
     Response response = await dio.post(
       EndPoints.registerUrl,
-      data: {
-        "name": user.name,
-        "email": user.email,
-        "password": user.password,
-        "phone": user.phone,
-        "location": user.location,
-        "country_id": user.countryId,
-      },
+      data: user.toJsonRegister(),
     );
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.registerUrl}');
+    print('Response : \n ${response.data}');
     return LoginModel.fromJson(response.data);
+  }
+
+  Future<StatusResponse> userUpdateProfile(User user) async {
+    print('Url : ${EndPoints.updateProfileUrl}');
+    Response response = await dio.post(
+      EndPoints.updateProfileUrl,
+      data: await user.toJsonUpdateProfile(),
+      options: Options(
+        headers: {
+          'Authorization': user.token,
+        },
+      ),
+    );
+    print('Url : ${EndPoints.updateProfileUrl}');
+    print('Response : \n ${response.data}');
+    return StatusResponse.fromJson(response.data);
   }
 
   Future<CountriesModel> countriesList() async {
@@ -77,7 +91,8 @@ class ServiceApi {
         options: Options(headers: {
           'Accept-Language': await prefs.getString('lan'),
         }));
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.countriesUrl}');
+    print('Response : \n ${response.data}');
     return CountriesModel.fromJson(response.data);
   }
 
@@ -88,7 +103,8 @@ class ServiceApi {
         'email': email,
       },
     );
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.forgetPasswordUrl}');
+    print('Response : \n ${response.data}');
     return StatusResponse.fromJson(response.data);
   }
 
@@ -97,7 +113,8 @@ class ServiceApi {
       EndPoints.checkCodeUrl,
       data: {"code": code},
     );
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.checkCodeUrl}');
+    print('Response : \n ${response.data}');
     return StatusResponse.checkCodeFromJson(response.data);
   }
 
@@ -110,21 +127,53 @@ class ServiceApi {
         'password_confirmation': passwords,
       },
     );
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.resetPasswordUrl}');
+    print('Response : \n ${response.data}');
     return StatusResponse.fromJson(response.data);
   }
 
-  Future<AllPackageModel> allPackageApis(String token,String lan) async {
+  Future<AllPackageModel> allPackageApis(String token, String lan) async {
     final response = await dio.get(
       EndPoints.allPackagesUrl,
       options: Options(
         headers: {
           'Authorization': token,
-          'Accept-Language':lan
+          'Accept-Language': lan,
         },
       ),
     );
-    print("Response : ${response.data}");
+    print('Url : ${EndPoints.allPackagesUrl}');
+    print('Response : \n ${response.data}');
     return AllPackageModel.fromJson(response.data);
+  }
+
+  Future<StatusResponse> logoutUser(String token) async {
+    print('Url : ${EndPoints.logoutUrl}');
+    final response = await dio.post(
+      EndPoints.logoutUrl,
+      options: Options(
+        headers: {
+          'Authorization': '${token}',
+        },
+      ),
+    );
+    print('Url : ${EndPoints.logoutUrl}');
+    print('Response : \n ${response.data}');
+    return StatusResponse.fromJson(response.data);
+  }
+
+  Future<UserStatistic> userStatistics(String token) async {
+    print('Url : ${EndPoints.userStatisticsUrl}');
+    final response = await dio.get(
+      EndPoints.userStatisticsUrl,
+      options: Options(
+        headers: {
+          'Authorization': '${token}',
+        },
+      ),
+    );
+    print('Url : ${EndPoints.userStatisticsUrl}');
+    print('Response : \n ${response.data}');
+    return UserStatistic.fromJson(response.data);
   }
 }

@@ -1,9 +1,12 @@
 part of 'registration_cubit.dart';
 
-@immutable
 abstract class RegistrationState {}
 
 class RegistrationInitial extends RegistrationState {}
+
+
+class RegistrationUpdateUserSuccess extends RegistrationState {}
+class RegistrationUpdateUserFailure extends RegistrationState {}
 
 class RegistrationLoginLoading extends RegistrationState {}
 class RegistrationLoginLoaded extends RegistrationState {}

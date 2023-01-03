@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/remote/service.dart';
 import 'features/app_settings/presentation/cubit/app_setting_cubit.dart';
 import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
+import 'features/profile/presentation/cubit/profile_cubit.dart';
 import 'features/registeration/presentation/cubit/registration_cubit.dart';
 // import 'package:http/http.dart' as http;
 
@@ -36,6 +37,11 @@ Future<void> setup() async {
   );
   serviceLocator.registerFactory(
     () => PackagesCubit(
+      serviceLocator(),
+    ),
+  );
+  serviceLocator.registerFactory(
+    () => ProfileCubit(
       serviceLocator(),
     ),
   );

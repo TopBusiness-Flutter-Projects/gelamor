@@ -31,6 +31,7 @@
   "password_validation_message": "الرجاء إدخال كلمه المرور",
   "sign_up_btn": "اشتراك",
   "sing_in_btn": "تسجيل الدخول",
+  "update_btn": "تعديل",
   "already_have_account_text": "لديك حساب بالفعل؟",
   "do_not_have_account_text": "ليس لديك حساب ؟",
   "challenge_yourself_text": "تحدى نفسك",

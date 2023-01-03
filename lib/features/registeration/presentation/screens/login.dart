@@ -20,6 +20,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<RegistrationCubit>().emailController.text='yehia@gmail.com';
+    context.read<RegistrationCubit>().passwordController.text='000000';
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: BlocBuilder<RegistrationCubit, RegistrationState>(

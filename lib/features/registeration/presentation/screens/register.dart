@@ -9,6 +9,7 @@ import '../../../../core/utils/toast_message_method.dart';
 import '../../../../core/widgets/circle_image_widget.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_textfield.dart';
+import '../../../../core/widgets/profile_photo.dart';
 import '../../../../core/widgets/show_loading_indicator.dart';
 import '../widgets/country_picker_widget.dart';
 
@@ -40,6 +41,10 @@ class RegisterScreen extends StatelessWidget {
             context.read<RegistrationCubit>().successfullyLogin(context);
             return ShowLoadingIndicator();
           }
+          if (state is RegistrationUpdateUserSuccess) {
+            Navigator.pop(context);
+            return ShowLoadingIndicator();
+          }
           if (state is RegistrationLoginLoading) {
             return ShowLoadingIndicator();
           }
@@ -51,19 +56,34 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 150,
-                    ),
-                    Text(
-                      AppStrings.challengeYourselfText,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                    ),
-                    SizedBox(height: 12),
-                    Text(
-                      AppStrings.challengeYourselfDetailsText,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
-                    ),
+                        height: context.read<RegistrationCubit>().isUpdate
+                            ? 100
+                            : 150),
+                    context.read<RegistrationCubit>().isUpdate
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ProfilePhotoWidget(
+                                imageUrl:
+                                    context.read<RegistrationCubit>().imageUrl,
+                              ),
+                            ],
+                          )
+                        : Column(
+                            children: [
+                              Text(
+                                AppStrings.challengeYourselfText,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 22),
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                AppStrings.challengeYourselfDetailsText,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ],
+                          ),
                     SizedBox(height: 22),
                     CustomTextField(
                       controller: context
@@ -94,8 +114,12 @@ class RegisterScreen extends StatelessWidget {
                       textInputType: TextInputType.phone,
                       validatorMessage: AppStrings.phoneValidatorMessage,
                     ),
-                    SizedBox(height: 22),
-                    CountryPickerWidget(),
+                    context.read<RegistrationCubit>().isUpdate
+                        ? Container()
+                        : SizedBox(height: 22),
+                    context.read<RegistrationCubit>().isUpdate
+                        ? Container()
+                        : CountryPickerWidget(),
                     SizedBox(height: 22),
                     CustomTextField(
                       controller: context
@@ -115,7 +139,10 @@ class RegisterScreen extends StatelessWidget {
                       image: 'null',
                       isPassword: true,
                       textInputType: TextInputType.text,
-                      validatorMessage: AppStrings.passwordValidationMessage,
+                      validatorMessage:
+                          context.read<RegistrationCubit>().isUpdate
+                              ? "no valid"
+                              : AppStrings.passwordValidationMessage,
                     ),
                     SizedBox(height: 22),
                     CustomTextField(
@@ -127,38 +154,49 @@ class RegisterScreen extends StatelessWidget {
                       image: 'null',
                       textInputType: TextInputType.text,
                       validatorMessage:
-                          AppStrings.confirmPasswordValidationMessage,
+                          context.read<RegistrationCubit>().isUpdate
+                              ? "no valid"
+                              : AppStrings.confirmPasswordValidationMessage,
                     ),
                     SizedBox(height: 40),
                     CustomButton(
-                      text: AppStrings.signUpBtn,
+                      text: context.read<RegistrationCubit>().isUpdate
+                          ? AppStrings.updateBtn
+                          : AppStrings.signUpBtn,
                       color: AppColors.primary,
                       onClick: () {
-                        if (formKey.currentState!.validate()) {
-                          if (context
-                                  .read<RegistrationCubit>()
-                                  .registerPasswordController
-                                  .text !=
-                              context
-                                  .read<RegistrationCubit>()
-                                  .registerConfirmPasswordController
-                                  .text) {
-                            toastMessage(
-                              AppStrings.checkPasswordMessage,
-                              context,
-                              color: AppColors.error,
-                            );
-                          } else if (context
-                                  .read<RegistrationCubit>()
-                                  .countryId ==
-                              0) {
-                            toastMessage(
-                              AppStrings.selectCountryMessage,
-                              context,
-                              color: AppColors.error,
-                            );
-                          } else {
-                            context.read<RegistrationCubit>().userRegister();
+                        if (context.read<RegistrationCubit>().isUpdate) {
+                          if (formKey.currentState!.validate()) {
+                            print('tttttttttttttttttttttt');
+                              context.read<RegistrationCubit>().userUpdate();
+                          }
+                        } else {
+                          if (formKey.currentState!.validate()) {
+                            if (context
+                                    .read<RegistrationCubit>()
+                                    .registerPasswordController
+                                    .text !=
+                                context
+                                    .read<RegistrationCubit>()
+                                    .registerConfirmPasswordController
+                                    .text) {
+                              toastMessage(
+                                AppStrings.checkPasswordMessage,
+                                context,
+                                color: AppColors.error,
+                              );
+                            } else if (context
+                                    .read<RegistrationCubit>()
+                                    .countryId ==
+                                0) {
+                              toastMessage(
+                                AppStrings.selectCountryMessage,
+                                context,
+                                color: AppColors.error,
+                              );
+                            } else {
+                              context.read<RegistrationCubit>().userRegister();
+                            }
                           }
                         }
                       },
@@ -166,20 +204,23 @@ class RegisterScreen extends StatelessWidget {
                       borderRadius: 80,
                     ),
                     SizedBox(height: 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(AppStrings.alreadyHaveAccountText),
-                        TextButton(
-                          onPressed: () =>
-                              Navigator.pushNamed(context, Routes.loginRoute),
-                          child: Text(AppStrings.signInBtn),
-                          style: TextButton.styleFrom(
-                            foregroundColor: AppColors.primary, // Text Color
+                    context.read<RegistrationCubit>().isUpdate
+                        ? Container()
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(AppStrings.alreadyHaveAccountText),
+                              TextButton(
+                                onPressed: () => Navigator.pushNamed(
+                                    context, Routes.loginRoute),
+                                child: Text(AppStrings.signInBtn),
+                                style: TextButton.styleFrom(
+                                  foregroundColor:
+                                      AppColors.primary, // Text Color
+                                ),
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
                     SizedBox(height: 25),
                   ],
                 ),

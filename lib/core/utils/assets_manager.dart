@@ -38,6 +38,10 @@ class ImageAssets {
   static const String maleIcon = '$iconsPath/male.svg';
   static const String femaleIcon = '$iconsPath/female.svg';
   static const String sliderIcon = '$iconsPath/slider_icon.svg';
+  static const String visaIcon = '$iconsPath/visa.svg';
+  static const String kNetIcon = '$iconsPath/k_net.svg';
+  static const String cashIcon = '$iconsPath/cash.svg';
+  static const String editPenIcon = '$iconsPath/edit_pen.svg';
 
 
 

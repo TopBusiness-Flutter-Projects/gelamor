@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/remote/handle_exeption.dart';
@@ -34,11 +33,15 @@ class RegistrationCubit extends Cubit<RegistrationState> {
   TextEditingController registerConfirmPasswordController =
       TextEditingController();
 
+  XFile? image;
   int code = 0;
   String message = '';
   bool isCountriesDropdown = false;
+  bool isUpdate = false;
+  String imageUrl = '';
   int countryId = 0;
   String checkCode = '';
+  String token = '';
 
   List<String> countriesListData = [];
 
@@ -75,6 +78,17 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     }).whenComplete(
       () => emit(RegistrationInitial()),
     );
+  }
+
+  putDataToUpdate(LoginModel loginModel) {
+    isUpdate = true;
+    token= loginModel.user!.token!;
+    imageUrl = loginModel.user!.img!;
+    registerNameController.text = loginModel.user!.name!;
+    registerEmailController.text = loginModel.user!.email!;
+    registerPhoneController.text = loginModel.user!.phone!;
+    registerLocationController.text = loginModel.user!.location!;
+    registerLocationController.text = loginModel.user!.location!;
   }
 
 //////////////////////////////////////
@@ -122,6 +136,38 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         emit(RegistrationLoginLoaded());
       } else {
         errorMessage(response.message!, response.code!);
+      }
+    } on DioError catch (e) {
+      print(" Error : ${e}");
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      emit(RegistrationLoginError());
+      throw errorMessage;
+    }
+  }
+
+  userUpdate() async {
+    emit(RegistrationLoginLoading());
+    try {
+      final response = await serviceApi.userUpdateProfile(
+        User(
+          token: token,
+          email: registerEmailController.text,
+          password: registerPasswordController.text.isNotEmpty
+              ? registerPasswordController.text
+              : null,
+          name: registerNameController.text,
+          phone: registerPhoneController.text,
+          location: registerLocationController.text,
+          img: image != null ? image!.path : null,
+        ),
+      );
+      if (response.code == 200) {
+        // code = response.code!;
+        // message = response.message!;
+        // storeUser(response);
+        emit(RegistrationUpdateUserSuccess());
+      } else {
+        errorMessage(response.message, response.code);
       }
     } on DioError catch (e) {
       print(" Error : ${e}");

@@ -54,6 +54,7 @@ class AppStrings {
   static String checkPasswordMessage = 'check_password_message'.tr();
   static String signUpBtn = 'sign_up_btn'.tr();
   static String signInBtn = 'sing_in_btn'.tr();
+  static String updateBtn = 'update_btn'.tr();
   static String forgetPasswordBtn = 'forget_password_btn'.tr();
   static String alreadyHaveAccountText = 'already_have_account_text'.tr();
   static String doNotHaveAccountText = 'do_not_have_account_text'.tr();

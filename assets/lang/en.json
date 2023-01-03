@@ -33,6 +33,7 @@
   "confirm_password_validation_message": "Please enter Confirm Password",
   "sign_up_btn": "Sign Up",
   "sing_in_btn": "Sign In",
+  "update_btn": "Update",
   "already_have_account_text": "Already have Account ?",
   "do_not_have_account_text": "Don’t have an account ?",
   "challenge_yourself_text": "Challenge Yourself",

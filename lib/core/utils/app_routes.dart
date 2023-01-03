@@ -4,6 +4,7 @@ import 'package:gelamor/features/navigation_bottom/screens/navigation_bottom.dar
 import '../../core/utils/app_strings.dart';
 import '../../features/contact_us/presentation/screens/contact_us.dart';
 import '../../features/packages/presentation/screens/all_package_screen.dart';
+import '../../features/profile/presentation/screens/profile.dart';
 import '../../features/registeration/presentation/screens/check_code.dart';
 import '../../features/registeration/presentation/screens/forget_password.dart';
 import '../../features/registeration/presentation/screens/login.dart';
@@ -25,6 +26,7 @@ class Routes {
   static const String weightLoseScreenRoute = '/weightLoseScreen';
   static const String weightLoseResultScreenRoute = '/weightLoseResultScreen';
   static const String allPackagesScreensRoute = '/allPackagesScreens';
+  static const String profileRoute = '/Profile';
 }
 
 class AppRoutes {
@@ -72,9 +74,13 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => WeightLoseResultScreen(),
         );
-        case Routes.allPackagesScreensRoute:
+      case Routes.allPackagesScreensRoute:
         return MaterialPageRoute(
           builder: (context) => AllPackagesScreens(),
+        );
+      case Routes.profileRoute:
+        return MaterialPageRoute(
+          builder: (context) => ProfileScreen(),
         );
       default:
         return undefinedRoute();

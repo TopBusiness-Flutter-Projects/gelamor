@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+
 LoginModel loginModelFromJson(String str) =>
     LoginModel.fromJson(json.decode(str));
 
@@ -32,6 +34,7 @@ class LoginModel {
         "data": user!.toJson(),
       };
 }
+
 class User {
   User({
     this.id,
@@ -44,7 +47,7 @@ class User {
     this.img,
     this.isActive,
     this.token,
-    this.createdAt,
+    // this.createdAt,
   });
 
   int? id;
@@ -57,7 +60,7 @@ class User {
   String? img;
   dynamic isActive;
   String? token;
-  DateTime? createdAt;
+  // DateTime? createdAt;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
@@ -69,7 +72,7 @@ class User {
         img: json["img"],
         isActive: json["is_active"],
         token: json["token"],
-        createdAt: DateTime.parse(json["created_at"]),
+        // createdAt: DateTime.parse(json["created_at"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -82,7 +85,29 @@ class User {
         "img": img,
         "is_active": isActive,
         "token": token,
-        "created_at":
-            "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
+        // "created_at":
+        //     "${createdAt!.year.toString().padLeft(4, '0')}-${createdAt!.month.toString().padLeft(2, '0')}-${createdAt!.day.toString().padLeft(2, '0')}",
+      };
+
+  Map<String, dynamic> toJsonRegister() => {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "location": location,
+        "country_id": countryId,
+        "password": password,
+      };
+
+  Future<Map<String, dynamic>> toJsonUpdateProfile() async => {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "location": location,
+        if (password != null) ...{
+          "password": password,
+        },
+        if (img != null) ...{
+          "img": await MultipartFile.fromFile(img!),
+        },
       };
 }

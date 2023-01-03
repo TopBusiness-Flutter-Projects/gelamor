@@ -90,8 +90,10 @@ class CustomTextField extends StatelessWidget {
             maxLines: isPassword ? 1 : 20,
             minLines: minLine,
             validator: (value) {
-              if (value == null || value.isEmpty) {
-                return validatorMessage;
+              if(validatorMessage!='no valid'){
+                if (value == null || value.isEmpty) {
+                  return validatorMessage;
+                }
               }
               return null;
             },

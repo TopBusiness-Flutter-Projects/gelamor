@@ -10,6 +10,7 @@ import 'features/app_settings/presentation/cubit/app_setting_cubit.dart';
 import 'features/contact_us/presentation/cubit/contact_us_cubit.dart';
 import 'features/navigation_bottom/cubit/navigator_bottom_cubit.dart';
 import 'features/packages/presentation/cubit/packages_cubit.dart';
+import 'features/profile/presentation/cubit/profile_cubit.dart';
 import 'features/registeration/presentation/cubit/registration_cubit.dart';
 
 class Glamor extends StatefulWidget {
@@ -45,6 +46,10 @@ class _GlamorState extends State<Glamor> {
         BlocProvider(
           create: (_) =>
               injector.serviceLocator<PackagesCubit>(),
+        ),
+        BlocProvider(
+          create: (_) =>
+              injector.serviceLocator<ProfileCubit>(),
         ),
       ],
       child:  MaterialApp(

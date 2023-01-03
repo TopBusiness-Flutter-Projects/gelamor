@@ -28,7 +28,7 @@ class AppColors {
   static  Color grey4 = HexColor("#C4C4C4");
   static  Color grey5 = HexColor("#DADADA");
   static  Color grey6 = HexColor("#747474");
-  static  Color grey7 = HexColor("#F3F3F3");
+  static  Color grey7 = HexColor("#FAF7F2");
 
   static   Color color1 = HexColor('#238854');
   static   Color color2 = HexColor('#937C63');
