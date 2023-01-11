@@ -14,7 +14,7 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this.serviceApi) : super(ProfileInitial()) {
-    _getStoreUser().then((value) => getUserStatistic());
+    getStoreUser().then((value) => getUserStatistic());
   }
 
   late LoginModel loginDataModel;
@@ -22,7 +22,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   List<StatisticDatum>? statisticList;
   int maxCalories = 0;
 
-  Future<void> _getStoreUser() async {
+  Future<void> getStoreUser() async {
     emit(ProfileUserLoading());
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getString('user') != null) {
@@ -34,8 +34,6 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> clearSharedUser() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.clear();
     emit(ProfileInitial());
   }
 
@@ -44,6 +42,8 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ProfileLogoutLoading());
       final response = await serviceApi.logoutUser(loginDataModel.user!.token!);
       if (response.code == 200) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.clear();
         emit(ProfileLogoutLoaded());
       } else {
         emit(ProfileLogoutError());

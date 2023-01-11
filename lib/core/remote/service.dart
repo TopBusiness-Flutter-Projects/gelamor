@@ -69,20 +69,40 @@ class ServiceApi {
     return LoginModel.fromJson(response.data);
   }
 
-  Future<StatusResponse> userUpdateProfile(User user) async {
+  Future<LoginModel> userUpdateProfile(User user) async {
     print('Url : ${EndPoints.updateProfileUrl}');
+    print('User : ${await user.toJsonUpdateProfile()}');
+    var fields = FormData.fromMap({});
+    fields = FormData.fromMap({
+      "name": user.name,
+      "email": user.email,
+      "phone": user.phone,
+      "location": user.location,
+      "country_id": user.countryId,
+      if (user.password != null) ...{
+        "password": user.password,
+      },
+      if (user.img != null) ...{
+        "img": await MultipartFile.fromFile(user.img!),
+      },
+    });
     Response response = await dio.post(
       EndPoints.updateProfileUrl,
-      data: await user.toJsonUpdateProfile(),
+      data: fields,
       options: Options(
+        followRedirects: false,
+        validateStatus: (status) {
+          return status! < 500;
+        },
         headers: {
           'Authorization': user.token,
+          "Accept":"application/json",
         },
       ),
     );
     print('Url : ${EndPoints.updateProfileUrl}');
     print('Response : \n ${response.data}');
-    return StatusResponse.fromJson(response.data);
+    return LoginModel.fromJson(response.data);
   }
 
   Future<CountriesModel> countriesList() async {

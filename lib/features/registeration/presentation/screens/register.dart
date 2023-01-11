@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gelamor/core/utils/app_strings.dart';
+import 'package:gelamor/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:gelamor/features/registeration/presentation/cubit/registration_cubit.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -13,10 +14,20 @@ import '../../../../core/widgets/profile_photo.dart';
 import '../../../../core/widgets/show_loading_indicator.dart';
 import '../widgets/country_picker_widget.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
-  GlobalKey<FormState> formKey = GlobalKey();
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  GlobalKey<FormState> formKey = GlobalKey();
+  @override
+  void dispose() {
+    context.read<RegistrationCubit>().clearDataOfUpdate();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +53,13 @@ class RegisterScreen extends StatelessWidget {
             return ShowLoadingIndicator();
           }
           if (state is RegistrationUpdateUserSuccess) {
-            Navigator.pop(context);
+            context.read<ProfileCubit>().getStoreUser();
+            Future.delayed(Duration(milliseconds: 500), () {
+              context.read<RegistrationCubit>().clearDataOfUpdate();
+              Future.delayed(Duration(microseconds: 300), () {
+                Navigator.pop(context);
+              });
+            });
             return ShowLoadingIndicator();
           }
           if (state is RegistrationLoginLoading) {
@@ -168,7 +185,7 @@ class RegisterScreen extends StatelessWidget {
                         if (context.read<RegistrationCubit>().isUpdate) {
                           if (formKey.currentState!.validate()) {
                             print('tttttttttttttttttttttt');
-                              context.read<RegistrationCubit>().userUpdate();
+                            context.read<RegistrationCubit>().userUpdate();
                           }
                         } else {
                           if (formKey.currentState!.validate()) {

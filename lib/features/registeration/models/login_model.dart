@@ -60,6 +60,7 @@ class User {
   String? img;
   dynamic isActive;
   String? token;
+
   // DateTime? createdAt;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -103,6 +104,7 @@ class User {
         "email": email,
         "phone": phone,
         "location": location,
+        "country_id": countryId,
         if (password != null) ...{
           "password": password,
         },

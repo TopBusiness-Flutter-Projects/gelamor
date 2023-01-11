@@ -46,9 +46,10 @@ class RegistrationCubit extends Cubit<RegistrationState> {
   List<String> countriesListData = [];
 
 /////////////// Methods /////////////////
-  storeUser(LoginModel loginModel) async {
+  Future<void> storeUser(LoginModel loginModel) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('user', jsonEncode(loginModel));
+    print('Successfully Saved User');
   }
 
   errorMessage(String message, int code) {
@@ -82,13 +83,27 @@ class RegistrationCubit extends Cubit<RegistrationState> {
 
   putDataToUpdate(LoginModel loginModel) {
     isUpdate = true;
-    token= loginModel.user!.token!;
+    token = loginModel.user!.token!;
     imageUrl = loginModel.user!.img!;
+    countryId = loginModel.user!.countryId!;
     registerNameController.text = loginModel.user!.name!;
     registerEmailController.text = loginModel.user!.email!;
     registerPhoneController.text = loginModel.user!.phone!;
     registerLocationController.text = loginModel.user!.location!;
     registerLocationController.text = loginModel.user!.location!;
+  }
+
+  clearDataOfUpdate() {
+    isUpdate = false;
+    token = '';
+    imageUrl = '';
+    countryId = 0;
+    registerNameController.clear();
+    registerEmailController.clear();
+    registerPhoneController.clear();
+    registerLocationController.clear();
+    registerLocationController.clear();
+    emit(RegistrationInitial());
   }
 
 //////////////////////////////////////
@@ -159,15 +174,16 @@ class RegistrationCubit extends Cubit<RegistrationState> {
           phone: registerPhoneController.text,
           location: registerLocationController.text,
           img: image != null ? image!.path : null,
+          countryId: countryId,
         ),
       );
       if (response.code == 200) {
-        // code = response.code!;
-        // message = response.message!;
-        // storeUser(response);
+        code = response.code!;
+        message = response.message!;
+        storeUser(response);
         emit(RegistrationUpdateUserSuccess());
       } else {
-        errorMessage(response.message, response.code);
+        errorMessage(response.message!, response.code!);
       }
     } on DioError catch (e) {
       print(" Error : ${e}");
